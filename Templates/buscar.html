@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscar Pessoas</title>
+</head>
+<body>
+    <h1>Buscar Pessoas</h1>
+
+    <!-- Formulário de busca -->
+    <form method="POST">
+        Nome: <input type="text" name="nome">
+        Equipe: <input type="text" name="equipe">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Lista os resultados da busca -->
+    {% if resultados %}
+        <h2>Resultados:</h2>
+        <ul>
+        {% for pessoa in resultados %}
+            <li>
+                {{ pessoa['nome'] }} | {{ pessoa['equipe'] }} | {{ pessoa['celular'] }}
+                <!-- Botão para excluir essa pessoa -->
+                <a href="/delete/{{ pessoa['id'] }}" onclick="return confirm('Deseja excluir {{ pessoa['nome'] }}?')">
+                    ❌ Excluir
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {% elif resultados is not none %}
+        <p>Nenhum resultado encontrado.</p>
+    {% endif %}
+
+    <a href="/dashboard">⬅ Voltar</a>
+</body>
+</html>
