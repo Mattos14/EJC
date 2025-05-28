@@ -1,38 +1,46 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> <!-- Documento HTML5 -->
+<html lang="pt-br"> <!-- Define idioma como português Brasil -->
 <head>
-    <meta charset="UTF-8">
-    <title>Buscar Pessoas</title>
+    <meta charset="UTF-8"> <!-- Codificação dos caracteres -->
+    <title>Buscar Pessoas</title> <!-- Título da aba -->
+
+    <!-- Fonte Roboto do Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- Estilo externo (CSS) -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Buscar Pessoas</h1>
+    <!-- Container principal escuro -->
+    <div class="form-container">
+        <h1>Buscar Pessoas</h1>
 
-    <!-- Formulário de busca -->
-    <form method="POST">
-        Nome: <input type="text" name="nome">
-        Equipe: <input type="text" name="equipe">
-        <button type="submit">Buscar</button>
-    </form>
+        <!-- Formulário de busca -->
+        <form method="POST">
+            <input type="text" name="nome" placeholder="Nome">
+            <input type="text" name="equipe" placeholder="Equipe">
+            <button type="submit" class="btn">Buscar</button>
+        </form>
 
-    <!-- Lista os resultados da busca -->
-    {% if resultados %}
-        <h2>Resultados:</h2>
-        <ul>
-        {% for pessoa in resultados %}
-            <li>
-                {{ pessoa['nome'] }} | {{ pessoa['equipe'] }} | {{ pessoa['celular'] }}
-                <!-- Botão para excluir essa pessoa -->
-                <a href="/delete/{{ pessoa['id'] }}" onclick="return confirm('Deseja excluir {{ pessoa['nome'] }}?')">
-                    ❌ Excluir
-                </a>
-            </li>
-        {% endfor %}
-        </ul>
+        <!-- Resultados da busca -->
+        {% if resultados %}
+            <h2>Resultados:</h2>
+            <ul class="menu-list">
+                {% for pessoa in resultados %}
+                    <li>
+                        {{ pessoa['nome'] }} | {{ pessoa['equipe'] }} | {{ pessoa['celular'] }}
+                        <a href="/delete/{{ pessoa['id'] }}" class="btn danger" onclick="return confirm('Deseja excluir {{ pessoa['nome'] }}?')">
+                            ❌ Excluir
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% elif resultados is not none %}
+            <p>Nenhum resultado encontrado.</p>
+        {% endif %}
 
-    {% elif resultados is not none %}
-        <p>Nenhum resultado encontrado.</p>
-    {% endif %}
-
-    <a href="/dashboard">⬅ Voltar</a>
+        <!-- Link para voltar -->
+        <a href="/dashboard" class="btn">⬅ Voltar</a>
+    </div>
 </body>
 </html>

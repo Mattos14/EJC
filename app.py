@@ -17,7 +17,7 @@ def login():
         senha = request.form['senha']
 
         # Verifica se a senha está correta (fixa aqui, mas poderia vir de um banco)
-        if senha == '1234':
+        if senha == 'EJC2025':
             session['logado'] = True  # Cria a sessão
             return redirect('/dashboard')
         else:

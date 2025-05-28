@@ -1,0 +1,80 @@
+/* Fundo com imagem e sombra escura */
+body {
+    background: 
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('/static/fundo.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Container preto semitransparente centralizado */
+.form-container {
+    background-color: rgba(0, 0, 0, 0.7);
+    max-width: 400px;
+    margin: 80px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #000;
+    text-align: center;
+}
+
+/* Lista sem marcadores */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0 0;
+}
+
+/* Espaçamento entre os itens */
+.menu-list li {
+    margin: 15px 0;
+}
+
+/* Botões estilizados */
+.btn {
+    display: inline-block;
+    background-color: #000000; /* preto */
+    color: white !important;   /* força texto branco */
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* Efeito hover nos botões */
+.btn:hover {
+    background-color: #081270;
+}
+/* Botão de excluir com estilo vermelho */
+.btn.danger {
+    background-color: #dc3545; /* vermelho */
+    padding: 5px 8px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.btn.danger:hover {
+    background-color: #c82333;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #000000;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    margin-top: 15px; /* Adiciona espaço acima */
+}
+
